@@ -1,32 +1,16 @@
-class StringBuilder {
-  #value
+const nameInput = document.querySelector("#name-input");
 
-  constructor(initialValue) {
-    this.#value = initialValue;
-  }
+const nameOutput = document.querySelector("#name-output");
 
-  getValue() {
-    return this.#value;
-  }
+const switchName = () => {
+    const newName = nameInput.value.trim();
 
-  padEnd(str) {
-    this.#value += str;
-  }
+    if (nameInput.value == 0) {
+        nameOutput.textContent = "Anonymous"
+    } else {
+        nameOutput.textContent = newName; 
+    }
+       
+};
 
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
-
-  padBoth(str) {
-    this.#value =  str + this.#value + str;
-  }
-}
-
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
+nameInput.addEventListener("input", switchName)
