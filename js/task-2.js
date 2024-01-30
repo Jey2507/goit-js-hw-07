@@ -28,16 +28,12 @@ const images = [
   },
 ];
 
-const galery = document.querySelector(".gallery")
+const gallery = document.querySelector(".gallery")
 
-images.forEach((item) => {
-  const li = document.createElement("li");
-  galery.append(li);
-  const img = document.createElement("img");
-  img.src = item.url;
-  img.alt = item.alt;
-  img.style.width = "360px"
-  img.style.height = "300px"
-  
-  li.append(img);
-})
+const imagesHTML = images.map(item =>`
+  <li>
+    <img src="${item.url}" alt="${item.alt}" style="width: 360px; height: 300px;">
+  </li>
+`).join('');
+
+gallery.innerHTML = imagesHTML;

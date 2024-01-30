@@ -9,8 +9,8 @@ const value = document.querySelector("#controls input")
 const create = document.querySelector("#controls button[data-create]")
 const del = document.querySelector("#controls button[data-destroy]")
 
+
 const createBoxes = amount => {
-  amount = Number(value.value);
   let size = 30;
   boxes.innerHTML = "";
   if (amount > 0 && amount <= 100) {
@@ -23,11 +23,15 @@ const createBoxes = amount => {
     size += 10;
   }
   }
+  value.value = "";
 }
 
 const destroyBoxes = () => {
   boxes.innerHTML = ""
 }
 
-create.addEventListener("click", createBoxes)
+create.addEventListener("click", () => {
+  const amountNum = Number(value.value);
+  createBoxes(amountNum)
+})
 del.addEventListener("click", destroyBoxes)
